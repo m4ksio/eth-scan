@@ -11,9 +11,6 @@ import java.util.concurrent.Executors;
 @Configuration
 public class Config {
 
-//    @Autowired
-//    SyncPool syncPool;
-
     @Bean
     EthereumBean ethereumBean() throws Exception {
         EthereumBean ethereumBean = new EthereumBean();
