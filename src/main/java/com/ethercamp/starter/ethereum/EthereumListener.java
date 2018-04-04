@@ -5,8 +5,11 @@ import org.ethereum.core.TransactionReceipt;
 import org.ethereum.facade.Ethereum;
 import org.ethereum.listener.EthereumListenerAdapter;
 import org.ethereum.util.BIUtil;
+import org.ethereum.util.ByteUtil;
+import org.spongycastle.util.encoders.Hex;
 
 import java.math.BigInteger;
+import java.nio.ByteBuffer;
 import java.util.List;
 
 public class EthereumListener extends EthereumListenerAdapter {
@@ -20,13 +23,23 @@ public class EthereumListener extends EthereumListenerAdapter {
 
     @Override
     public void onBlock(Block block, List<TransactionReceipt> receipts) {
-        System.out.println();
-        System.out.println("Do something on block: " + block.getNumber());
+        //System.out.println();
+        if (block.getNumber() % 1000 == 0) {
+            System.out.println("Do something on block: " + block.getNumber());
+        }
+
+        block.getTransactionsList().stream().limit(5).forEach((t) -> {
+
+
+            Long l = ByteUtil.byteArrayToLong(t.getValue());
+
+            //System.out.println("Sender " + Hex.toHexString(t.getSender()) + " -> " + Hex.toHexString(t.getReceiveAddress()) + "send " + l + " wei");
+        });
 
         if (syncDone)
             calcNetHashRate(block);
 
-        System.out.println();
+        //System.out.println();
     }
 
 

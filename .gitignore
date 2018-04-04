@@ -8,3 +8,7 @@
 logs
 
 database
+database*
+build
+out
+.DS_Store

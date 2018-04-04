@@ -1,6 +1,8 @@
 package com.ethercamp.starter;
 
 import com.ethercamp.starter.ethereum.EthereumBean;
+import org.ethereum.sync.SyncPool;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,6 +10,9 @@ import java.util.concurrent.Executors;
 
 @Configuration
 public class Config {
+
+//    @Autowired
+//    SyncPool syncPool;
 
     @Bean
     EthereumBean ethereumBean() throws Exception {
